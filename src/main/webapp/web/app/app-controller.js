@@ -11,8 +11,10 @@ define([ 'jquery', 'can', 'app/app-model' ], function($, can, Model) {
                     can.$('#spinner').removeClass('enable-spinner');
                     can.route('HelloWorld/:section');
                     can.route('HelloWorld/:section/:subSection');
-                    can.route.attr('section', 'home');
                     can.route.ready();
+                    if (!can.route.attr('section')) {
+                        can.route.attr('section', 'home');
+                    }
 
                     scope.attr('appdetails', data);
                 }, function(e) {
